@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F2C41E06-0DB3-43E1-AA74-40DA9FD98631"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4ADEBF2C-B82F-416C-8003-2DCC4512CCBF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "True test task/Helpers/Router/ContactsRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A12ADAF6-E94C-4298-B77F-4AF9A75F5226"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "True test task/Helpers/Router/ContactsRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "A12ADAF6-E94C-4298-B77F-4AF9A75F5226 - 866572c0b5abea87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "True_test_task.ContatcsRouter.perform(_: True_test_task.ContactSegue, from: True_test_task.MainViewController) -&gt; ()"
+                  moduleName = "True test task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladyslavgubanov/Development/True%20test%20task/True%20test%20task/Helpers/Router/ContactsRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  uuid = "A12ADAF6-E94C-4298-B77F-4AF9A75F5226 - 4aacec833b2327ea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in True_test_task.ContatcsRouter.perform(_: True_test_task.ContactSegue, from: True_test_task.MainViewController) -&gt; ()"
+                  moduleName = "True test task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladyslavgubanov/Development/True%20test%20task/True%20test%20task/Helpers/Router/ContactsRouter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
