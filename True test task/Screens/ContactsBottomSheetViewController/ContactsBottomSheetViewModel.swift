@@ -22,7 +22,7 @@ class ContactsBottomSheetViewModel {
             store.requestAccess(for: .contacts) { granted, error in
                 if granted {
                     let contacts = FetchContacts().fetchingContacts()
-                    completion(contacts, nil)
+                    completion(contacts, granted)
                 } else {
                     completion([], granted)
                 }

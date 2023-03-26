@@ -106,12 +106,9 @@ class ContactsBottomSheetViewController: UIViewController {
                     vc.modalPresentationStyle = .fullScreen
                     self?.present(vc, animated: true)
                 }
-            }
-
-            if let isAccessPermited = isPermited, !isAccessPermited {
+            } else {
                 DispatchQueue.main.async { [weak self] in
                     self?.accessButton.setTitle("Go to settings".uppercased(), for: .normal)
-                    self?.goToSettings()
                 }
             }
         }

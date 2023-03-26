@@ -162,8 +162,8 @@ private extension PhoneContactsCellTableViewCell {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor, constant: 16),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
-            stackView.centerYAnchor.constraint(equalTo: contactImage.centerYAnchor)
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6)//,
+//            stackView.centerYAnchor.constraint(equalTo: contactImage.centerYAnchor)
         ])
     }
 }
