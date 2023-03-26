@@ -82,6 +82,9 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
     // MARK: - Render UI
 
     func render(with model: ContactInfo) {
+        for view in contactImage.subviews{
+            view.removeFromSuperview()
+        }
 
         if model.hasImageIcon {
             contactImage.image = model.contactImage
@@ -162,8 +165,7 @@ private extension PhoneContactsCellTableViewCell {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor, constant: 16),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6)//,
-//            stackView.centerYAnchor.constraint(equalTo: contactImage.centerYAnchor)
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6)
         ])
     }
 }

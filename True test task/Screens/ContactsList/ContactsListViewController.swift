@@ -122,11 +122,12 @@ extension ContactsListViewController: UITableViewDelegate {
 
 extension ContactsListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.showContactsWith(searchText)
         print("searchText \(searchText)")
-    }
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchText \(searchBar.text)")
+        for (index, sectionContact) in viewModel.dataSource.section.enumerated() where sectionContact.type == .phoneContacts {
+            tableView.reloadSections([index], with: .automatic)
+        }
     }
 }
 
