@@ -78,10 +78,11 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
     }
 
     func render(with model: ContactInfo) {
+
         if model.hasImageIcon {
             contactImage.image = model.contactImage
         } else {
-            contactImage.image = model.contactImage.withTintColor(.random())
+            contactImage.tintColor = .random()
             addText(model.getInitials, on: contactImage)
         }
 
@@ -89,13 +90,20 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
 
         switch model.cellStyle {
         case .nameAndPhonenumber:
+            contactNameLabel.isHidden = false
+            contactPhoneNumberLabel.isHidden = false
             contactNameLabel.text = (model.firstName ?? "") + " " + (model.lastName ?? "")
-            contactPhoneNumberLabel.text = model.phoneNumber?.stringValue
+            let countryCode = model.phoneNumber?.value(forKey: "countryCode") as? String
+            let digits = model.phoneNumber?.value(forKey: "digits") as? String
+            contactPhoneNumberLabel.text = (countryCode ?? "") + (digits ?? "")
         case .onlyPhoneNumber:
-            contactNameLabel.text = nil
+            contactNameLabel.isHidden = true
+            contactPhoneNumberLabel.isHidden = false
             contactPhoneNumberLabel.textColor = .black
             contactPhoneNumberLabel.font = .truenoSemiBold(14)
-        default: break
+        case .onlyName:
+            contactNameLabel.isHidden = false
+            contactPhoneNumberLabel.isHidden = true
         }
 
         contactNameLabel.text = (model.firstName ?? "") + " " + (model.lastName ?? "")
@@ -156,8 +164,7 @@ private extension PhoneContactsCellTableViewCell {
 
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor, constant: 16),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            stackView.centerYAnchor.constraint(equalTo: contactImage.centerYAnchor)
         ])
     }
 }

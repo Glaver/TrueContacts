@@ -5,7 +5,6 @@ final class FavoritesCollectionViewCell: UICollectionViewCell {
     private lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.contentMode = .scaleAspectFill
-//        avatarImageView.image = UIImage(named: "empty_thumbnail_avatar")
 
         return avatarImageView
     }()
