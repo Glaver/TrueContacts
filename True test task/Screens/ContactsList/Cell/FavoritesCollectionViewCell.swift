@@ -2,6 +2,7 @@ import UIKit
 
 final class FavoritesCollectionViewCell: UICollectionViewCell {
    // MARK: - Views
+
     private lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.contentMode = .scaleAspectFill
@@ -18,12 +19,7 @@ final class FavoritesCollectionViewCell: UICollectionViewCell {
         return contactLabel
     }()
 
-    func render(with model: ContactInfo) {
-        avatarImageView.image = model.image != nil ? model.image : UIImage(named: "empty_thumbnail_avatar")
-        contactLabel.text = model.fullName
-    }
-
-    // MARK: - Lifecycle
+    // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,9 +32,16 @@ final class FavoritesCollectionViewCell: UICollectionViewCell {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Render UI
+
+    func render(with model: ContactInfo) {
+        avatarImageView.image = model.image != nil ? model.image : UIImage(named: "empty_thumbnail_avatar")
+        contactLabel.text = model.fullName
+    }
 }
 
-// MARK: - ProgrammaticLayout
+// MARK: - Programmatically layout
 
 extension FavoritesCollectionViewCell {
     func addSubviews() {

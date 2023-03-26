@@ -8,24 +8,23 @@ class ContactsBottomSheetViewModel {
         }
     }
 
-    func requestAccess(completion: @escaping ([ContactInfo]) -> Void?) {
+    func requestAccess(completion: @escaping ([ContactInfo], Bool?) -> Void?) {
         let store = CNContactStore()
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized:
             let contacts = FetchContacts().fetchingContacts()
-            completion(contacts)
+            completion(contacts, true)
         case .denied:
             store.requestAccess(for: .contacts) { granted, error in
-                if granted {
-                    let contacts = FetchContacts().fetchingContacts()
-                    completion(contacts)
-                }
+                completion([], granted)
             }
         case .restricted, .notDetermined:
             store.requestAccess(for: .contacts) { granted, error in
                 if granted {
                     let contacts = FetchContacts().fetchingContacts()
-                    completion(contacts)
+                    completion(contacts, nil)
+                } else {
+                    completion([], granted)
                 }
             }
         @unknown default:

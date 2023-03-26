@@ -26,7 +26,6 @@
 		A641650B29C7910000070864 /* SheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A641650A29C7910000070864 /* SheetPresentationController.swift */; };
 		A641650D29C791AD00070864 /* SheetPresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A641650C29C791AD00070864 /* SheetPresentAnimation.swift */; };
 		A641650F29C791BF00070864 /* SheetDismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A641650E29C791BF00070864 /* SheetDismissAnimation.swift */; };
-		A641651329C7A04000070864 /* ContactsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A641651229C7A04000070864 /* ContactsRouter.swift */; };
 		A641651529C7A30900070864 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A641651429C7A30900070864 /* MainViewModel.swift */; };
 		A641653A29C7BBF600070864 /* TruenoUltLtIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = A641652129C7BBF600070864 /* TruenoUltLtIt.otf */; };
 		A641653B29C7BBF600070864 /* TruenoBlkIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = A641652229C7BBF600070864 /* TruenoBlkIt.otf */; };
@@ -79,7 +78,6 @@
 		A641650A29C7910000070864 /* SheetPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresentationController.swift; sourceTree = "<group>"; };
 		A641650C29C791AD00070864 /* SheetPresentAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresentAnimation.swift; sourceTree = "<group>"; };
 		A641650E29C791BF00070864 /* SheetDismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDismissAnimation.swift; sourceTree = "<group>"; };
-		A641651229C7A04000070864 /* ContactsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRouter.swift; sourceTree = "<group>"; };
 		A641651429C7A30900070864 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		A641652129C7BBF600070864 /* TruenoUltLtIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TruenoUltLtIt.otf; sourceTree = "<group>"; };
 		A641652229C7BBF600070864 /* TruenoBlkIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TruenoBlkIt.otf; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			children = (
 				A600EAA129CB08CA0057AE1A /* Services */,
 				A641654E29C7BC7C00070864 /* Extensions */,
-				A641651129C79F9200070864 /* Router */,
 				A641651029C79A8400070864 /* BottomSheet */,
 			);
 			path = Helpers;
@@ -239,14 +236,6 @@
 				A641650E29C791BF00070864 /* SheetDismissAnimation.swift */,
 			);
 			path = BottomSheet;
-			sourceTree = "<group>";
-		};
-		A641651129C79F9200070864 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				A641651229C7A04000070864 /* ContactsRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		A641651629C7BA9E00070864 /* Bundle */ = {
@@ -403,7 +392,6 @@
 				A641650129C78FB300070864 /* ContactsBottomSheetViewController.swift in Sources */,
 				A6A7334A29CE713300DE6782 /* String+Extension.swift in Sources */,
 				A641650D29C791AD00070864 /* SheetPresentAnimation.swift in Sources */,
-				A641651329C7A04000070864 /* ContactsRouter.swift in Sources */,
 				A600EAAD29CB6BEA0057AE1A /* PhoneContactsCellTableViewCell.swift in Sources */,
 				A600EAA629CB69C90057AE1A /* ContactsListViewController.swift in Sources */,
 				A641650729C7906700070864 /* SheetTransition.swift in Sources */,

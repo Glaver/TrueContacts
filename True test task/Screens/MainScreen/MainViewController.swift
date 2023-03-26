@@ -1,27 +1,30 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    var viewModel: MainViewModel?
+    // MARK: - Views
 
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .green
-        button.setTitle("Contact permissions", for: .normal)
+        button.backgroundColor = UIColor(red: 76 / 255, green: 139 / 255, blue: 255 / 255, alpha: 1)
+        button.layer.cornerRadius = 25
+        button.setTitle("Allow access".uppercased(), for: .normal)
+        button.titleLabel?.font = .truenoSemiBold(14)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(contactPermissionTapped), for: .touchUpInside)
+
         return button
     }()
 
+    var viewModel: MainViewModel?
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        // Do any additional setup after loading the view.
-    }
-
-    private func setupView() {
         view.backgroundColor = .lightGray
         addSubviews()
         configureConstraints()
+        // Do any additional setup after loading the view.
     }
 
     @objc func contactPermissionTapped() {
@@ -31,6 +34,8 @@ class MainViewController: UIViewController {
         self.present(vc, animated: true)
     }
 }
+
+// MARK: - Programmatically Layout
 
 private extension MainViewController {
     func addSubviews() {
@@ -42,7 +47,7 @@ private extension MainViewController {
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            button.heightAnchor.constraint(equalToConstant: 40),
+            button.heightAnchor.constraint(equalToConstant: 48),
             button.widthAnchor.constraint(equalToConstant: 180)
         ])
     }

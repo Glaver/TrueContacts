@@ -45,6 +45,8 @@ class ContactsListViewController: UIViewController {
 
     var viewModel: ContactsListViewModel!
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -119,10 +121,6 @@ extension ContactsListViewController: UITableViewDelegate {
 // MARK: - UISearchBarDelegate
 
 extension ContactsListViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-
-    }
-
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("searchText \(searchText)")
     }
@@ -131,6 +129,8 @@ extension ContactsListViewController: UISearchBarDelegate {
         print("searchText \(searchBar.text)")
     }
 }
+
+// MARK: - Programmatically Layout
 
 private extension ContactsListViewController {
     func addSubviews() {

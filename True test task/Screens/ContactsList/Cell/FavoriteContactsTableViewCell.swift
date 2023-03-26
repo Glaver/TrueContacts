@@ -32,9 +32,11 @@ final class FavoriteContactsTableViewCell: UITableViewCell {
         return collectionView
     }()
 
-// MARK: - Property
+    // MARK: - Property
 
     var contactInfo: [ContactInfo] = []
+
+    // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -48,16 +50,15 @@ final class FavoriteContactsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Render UI
+
     func render(with model: [ContactInfo]) {
         contactInfo = model
         collectionView.reloadData()
     }
-
-    private func setupView() {
-        addSubviews()
-        configureConstraints()
-    }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension FavoriteContactsTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -78,12 +79,14 @@ extension FavoriteContactsTableViewCell: UICollectionViewDataSource {
 
 extension FavoriteContactsTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = ((collectionView.bounds.width - 16 * 2) - (8 * 3)) / 4
+        let cellWidth = ((collectionView.bounds.width - 16 * 2)) / 4
         return .init(width: cellWidth, height: 104)
     }
 }
 
 extension FavoriteContactsTableViewCell: UICollectionViewDelegate {}
+
+// MARK: - Programmatically layout
 
 private extension FavoriteContactsTableViewCell {
     func addSubviews() {

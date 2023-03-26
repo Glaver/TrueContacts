@@ -6,7 +6,7 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
     private lazy var contactImage: UIImageView = {
         let contactImage = UIImageView()
         contactImage.image = UIImage(named: "empty_avatar")
-        contactImage.contentMode = .scaleAspectFill
+        contactImage.contentMode = .scaleToFill
         contactImage.backgroundColor = .clear
         return contactImage
     }()
@@ -55,6 +55,8 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
         return inviteButton
     }()
 
+    // MARK: - Init
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -77,6 +79,8 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Render UI
+
     func render(with model: ContactInfo) {
 
         if model.hasImageIcon {
@@ -87,15 +91,15 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
         }
 
         inviteButton.setTitle(model.type.buttonText, for: .normal)
+        contactNameLabel.text = model.fullName
+        let digits = model.phoneNumber?.stringValue
+        contactPhoneNumberLabel.text = "+1 " + (digits ?? "")
 
         switch model.cellStyle {
         case .nameAndPhonenumber:
             contactNameLabel.isHidden = false
             contactPhoneNumberLabel.isHidden = false
-            contactNameLabel.text = (model.firstName ?? "") + " " + (model.lastName ?? "")
-            let countryCode = model.phoneNumber?.value(forKey: "countryCode") as? String
-            let digits = model.phoneNumber?.value(forKey: "digits") as? String
-            contactPhoneNumberLabel.text = (countryCode ?? "") + (digits ?? "")
+            contactPhoneNumberLabel.font = .truenoRegular(12)
         case .onlyPhoneNumber:
             contactNameLabel.isHidden = true
             contactPhoneNumberLabel.isHidden = false
@@ -105,10 +109,6 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
             contactNameLabel.isHidden = false
             contactPhoneNumberLabel.isHidden = true
         }
-
-        contactNameLabel.text = (model.firstName ?? "") + " " + (model.lastName ?? "")
-
-        contactPhoneNumberLabel.text = model.phoneNumber?.stringValue
     }
 
     private func addText(_ string: String, on image: UIImageView) {
@@ -126,12 +126,9 @@ final class PhoneContactsCellTableViewCell: UITableViewCell {
             label.centerYAnchor.constraint(equalTo: image.centerYAnchor, constant: -2)
         ])
     }
-
-    private func setupView() {
-        addSubviews()
-        configureConstraints()
-    }
 }
+
+// MARK: - Programmatically layout
 
 private extension PhoneContactsCellTableViewCell {
     func addSubviews() {
@@ -148,8 +145,8 @@ private extension PhoneContactsCellTableViewCell {
     func configureConstraints() {
         NSLayoutConstraint.activate([
             contactImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            contactImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
-            contactImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            contactImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2),
+            contactImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 3),
             contactImage.widthAnchor.constraint(equalToConstant: 48),
             contactImage.heightAnchor.constraint(equalToConstant: 48)
         ])
@@ -164,6 +161,8 @@ private extension PhoneContactsCellTableViewCell {
 
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor, constant: 16),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
             stackView.centerYAnchor.constraint(equalTo: contactImage.centerYAnchor)
         ])
     }

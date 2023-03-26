@@ -1,4 +1,5 @@
 import UIKit
+import Contacts
 
 class ContactsBottomSheetViewController: UIViewController {
 // MARK: Views
@@ -65,23 +66,28 @@ class ContactsBottomSheetViewController: UIViewController {
         return declineButton
     }()
     
-// MARK: - Property
+    // MARK: - Property
 
     var viewModel: ContactsBottomSheetViewModel
 
     private let sheetTransition = SheetTransition()
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         // Do any additional setup after loading the view.
     }
-    
+
+    // MARK: - Init
+
     init(viewModel: ContactsBottomSheetViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .custom
         transitioningDelegate = sheetTransition
+
     }
 
     required init?(coder: NSCoder) {
@@ -91,15 +97,35 @@ class ContactsBottomSheetViewController: UIViewController {
     // MARK: Buttons targets
 
     @objc func allowAccessButtonTapped() {
-        viewModel.requestAccess() { [weak self] contacts in
-            DispatchQueue.main.async {
-                let viewModel = ContactsListViewModel(contactInfo: contacts)
-                let vc = ContactsListViewController()
-                vc.viewModel = viewModel
-                vc.modalPresentationStyle = .fullScreen
-                self?.present(vc, animated: true)
+        viewModel.requestAccess() { (contacts, isPermited) in
+            if let isAccessPermited = isPermited, isAccessPermited  {
+                DispatchQueue.main.async { [weak self] in
+                    let viewModel = ContactsListViewModel(contactInfo: contacts)
+                    let vc = ContactsListViewController()
+                    vc.viewModel = viewModel
+                    vc.modalPresentationStyle = .fullScreen
+                    self?.present(vc, animated: true)
+                }
             }
-            //present(vc, animated: true)
+
+            if let isAccessPermited = isPermited, !isAccessPermited {
+                DispatchQueue.main.async { [weak self] in
+                    self?.accessButton.setTitle("Go to settings".uppercased(), for: .normal)
+                    self?.goToSettings()
+                }
+            }
+        }
+    }
+
+    private func goToSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                print("Settings opened: \(success)")
+            })
         }
     }
 
@@ -120,7 +146,7 @@ class ContactsBottomSheetViewController: UIViewController {
     }
 }
 
-// MARK: Add Subviews
+// MARK: - Programmatically Layout
 
 private extension ContactsBottomSheetViewController {
     func addSubviews() {
@@ -142,8 +168,6 @@ private extension ContactsBottomSheetViewController {
         view.addSubview(accessButton)
         accessButton.translatesAutoresizingMaskIntoConstraints = false
     }
-
-    // MARK: - Configure constraints
 
     func configureConstraints() {
         NSLayoutConstraint.activate([

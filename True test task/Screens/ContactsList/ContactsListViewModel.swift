@@ -2,7 +2,7 @@ import Foundation
 
 final class ContactsListViewModel {
     private (set) var dataSource: ContactListModel = .mock()
-    private (set) lazy var fileterdDataSource: [ContactInfo] = []
+    private (set) lazy var fileterdDataSource: [ContactInfo] = [] // TODO: For filtering logic
 
     func updateDataSource(with contacts: [ContactInfo]) {
         let section: ContactListModel.Section = .init(items: contacts, title: "My contacts".uppercased(), type: .phoneContacts)

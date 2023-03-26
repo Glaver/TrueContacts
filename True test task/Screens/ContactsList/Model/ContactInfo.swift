@@ -58,6 +58,8 @@ struct ContactInfo : Identifiable {
     }
 }
 
+// MARK: - Mock data
+
 extension ContactListModel {
     static func mock() -> ContactListModel {
         var favoritesItems: [ContactInfo] {
